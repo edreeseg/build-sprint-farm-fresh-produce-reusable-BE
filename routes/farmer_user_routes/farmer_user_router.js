@@ -38,4 +38,14 @@ router.get('/:id', (req, res) => {
         }))
 })
 
+router.get('/:id/farms', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const farms = await Farmers.findFarmsByFarmerId(id);
+        return res.json({ farms });
+    } catch(err) {
+        return res.status(500).json({ error: 'There was a problem while attempting to get farms.' });
+    }
+});
+
 module.exports = router;

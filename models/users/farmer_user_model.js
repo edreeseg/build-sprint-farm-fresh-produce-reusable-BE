@@ -30,3 +30,8 @@ function findByUsername(username){
     .where({username: username})
     .first();
 }
+
+function findFarmsByFarmerId(id){
+    return db('farm')
+        .where({ farmer_id: id });
+}
