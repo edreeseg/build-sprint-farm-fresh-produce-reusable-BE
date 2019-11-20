@@ -10,6 +10,7 @@ const farmerUser = require('./routes/farmer_user_routes/farmer_user_router.js')
 const farmRoutes = require('./routes/farm_router.js')
 const farmerVerification = require('./auth/farmer_authentication_middleware')
 const consumerVerification = require('./auth/consumer_authentication-middleware')
+const generalVerification = require('./auth/general_authentication_middleware');
 
 const server = express();
 
@@ -27,7 +28,7 @@ server.use('/api/tools',farmerVerification, toolRoutes)
 server.use('/api/farmers/produce',farmerVerification, farmerProduceRoutes)
 server.use('/api/locations', locationRoutes)
 server.use('/api/farmers',farmerVerification, farmerUser)
-server.use('/api/farms',farmerVerification, farmRoutes)
+server.use('/api/farms', generalVerification, farmRoutes)
 
 
 server.use('/docs', express.static('./docs'));
