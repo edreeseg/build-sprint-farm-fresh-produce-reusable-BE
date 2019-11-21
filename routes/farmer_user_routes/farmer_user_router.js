@@ -46,9 +46,7 @@ router.get("/:id/farms", async (req, res) => {
     console.log(farms);
     return res.json({ farms });
   } catch (err) {
-    return res
-      .status(500)
-      .json({ error: "There was a problem while attempting to get farms." });
+    return res.status(500).json({ error: error.message });
   }
 });
 
