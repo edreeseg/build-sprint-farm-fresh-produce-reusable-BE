@@ -42,8 +42,6 @@ router.get("/:id/farms", async (req, res) => {
   try {
     const { id } = req.params;
     const farms = await Farmers.findFarmsByFarmerId(id);
-    console.log("THESE ARE THE FARMS: ");
-    console.log(farms);
     return res.json({ farms });
   } catch (err) {
     return res.status(500).json({ error: err.message });
