@@ -1,37 +1,37 @@
-const db = require('../../data/dbConfig.js')
+const db = require("../../data/dbConfig.js");
 
 module.exports = {
-    add,
-    find,
-    findById,
-    findByUsername,
-}
+  add,
+  find,
+  findById,
+  findByUsername,
+  findFarmsByFarmerId
+};
 
-async function add(userData){
-    const [newUser] = await db('user_farmer')
+async function add(userData) {
+  const [newUser] = await db("user_farmer")
     .insert(userData)
-    .returning('*')
+    .returning("*");
 
-    return newUser
+  return newUser;
 }
 
-function find(){
-    return db('user_farmer');
+function find() {
+  return db("user_farmer");
 }
 
-function findById(id){
-    return db('user_farmer')
-    .where({id: id})
+function findById(id) {
+  return db("user_farmer")
+    .where({ id: id })
     .first();
 }
 
-function findByUsername(username){
-    return db('user_farmer')
-    .where({username: username})
+function findByUsername(username) {
+  return db("user_farmer")
+    .where({ username: username })
     .first();
 }
 
-function findFarmsByFarmerId(id){
-    return db('farm')
-        .where({ farmer_id: id });
+function findFarmsByFarmerId(id) {
+  return db("farm").where({ farmer_id: id });
 }
