@@ -46,7 +46,7 @@ router.get("/:id/farms", async (req, res) => {
     console.log(farms);
     return res.json({ farms });
   } catch (err) {
-    return res.status(500).json({ error: error.message });
+    return res.status(500).json({ error: err.message });
   }
 });
 
